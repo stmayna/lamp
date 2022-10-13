@@ -77,10 +77,11 @@ class InsertData {
 	}
 
 }
-
+/*
 $obj = new InsertData();
 
 if ($obj->insertSingleRow('777780','88891','This is the description 4',5,'2014-02-13 08:35:00',4.25,'13046','United Kingdom') !==false)
     echo "A new data has been added into invoices";
 else
     echo "Error adding new data";
+*/
