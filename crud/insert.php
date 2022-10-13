@@ -56,3 +56,6 @@ $CustomerID = $_POST['CustomerID'];
 $Country = $_POST['Country'];
 
 $obj->insertSingleRow($InvoiceNo,$StockCode,$Description,$Quantity,$InvoiceDate,$UnitPrice,$CustomerID,$Country);
+if (TRUE) {
+    
+}

@@ -1,55 +1,47 @@
+<?php
+        $pdo = new PDO('mysql:host=localhost;dbname=ship_ports', 'root', 'password');
+
+        /*$sql = 'SELECT * FROM invoices Orders LIMIT 100';*/
+        $sql = 'SELECT * FROM invoices ORDER BY InvoiceDate DESC LIMIT 30';
+
+        $q = $pdo->query($sql);
+
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+
+?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Online Retail</title>
-</head>
-<body>
-	<left>
-		<h1>Invoice Database</h1>
-		<form action="insert.php" method="post">
-			
-        <p>
-			<label for="InvoiceNo">Invoice Number:</label>
-			<input type="text" name="InvoiceNo" id="InvoiceNo">
-        </p>
-		
-        <p>
-			<label for="StockCode">Stock Code:</label>
-			<input type="text" name="StockCode" id="StockCode">
-        </p>
-	
-        <p>
-			<label for="Description">Description:</label>
-			<input type="text" name="Description" id="Description">
-        </p>
-			
-        <p>
-			<label for="Quantity">Quantity:</label>
-			<input type="text" name="Quantity" id="Quantity">
-        </p>
-
-        <p>
-			<label for="InvoiceDate">Invoice Date:</label>
-			<input type="text" name="InvoiceDate" id="InvoiceDate">
-        </p>
-
-        <p>
-			<label for="UnitPrice">Unit Price:</label>
-			<input type="text" name="UnitPrice" id="UnitPrice">
-        </p>
-
-        <p>
-			<label for="CustomerID">Customer ID:</label>
-			<input type="text" name="CustomerID" id="CustomerID">
-        </p>
-			
-        <p>
-			<label for="Country">Country:</label>
-			<input type="text" name="Country" id="Country">
-        </p>
-
-			<input type="submit" value="Submit">
-		</form>
-    </left>
-</body>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <table border="1">
+	        <thead>
+		    <tr>
+                <th>Invoice Number</th>
+                <th>Stock Code</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Invoice Date</th>
+                <th>Unit Price</th>
+                <th>Customer ID</th>
+                <th>Country</th>
+		    </tr>
+	        </thead>
+	    <tbody>
+        <?php while ($row = $q->fetch()): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['InvoiceNo']) ?></td>
+                            <td><?php echo htmlspecialchars($row['StockCode']); ?></td>
+                            <td><?php echo htmlspecialchars($row['Description']); ?></td>
+                            <td><?php echo htmlspecialchars($row['Quantity']) ?></td>
+                            <td><?php echo htmlspecialchars($row['InvoiceDate']); ?></td>
+                            <td><?php echo htmlspecialchars($row['UnitPrice']); ?></td>
+                            <td><?php echo htmlspecialchars($row['CustomerID']); ?></td>
+                            <td><?php echo htmlspecialchars($row['Country']); ?></td>
+                        </tr>
+        <?php endwhile; ?>
+	    </tbody>
+        </table>        
+    </body>
 </html>
