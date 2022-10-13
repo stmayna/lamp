@@ -9,25 +9,16 @@ class InsertData {
 
     private $pdo = null;
 
-    /**
-     * Open the database connection
-     */
     public function __construct() {
-        // open database connection
-        $conStr = sprintf("mysql:host=%s;dbname=%s", self::DB_HOST, self::DB_NAME);
+        $conStr = sprintf("mysql:host=%s;dbname=%s", InsertData::DB_HOST, InsertData::DB_NAME);
         // what's %s for? don't you curious?
         try {
-            $this->pdo = new PDO($conStr, self::DB_USER, self::DB_PASSWORD);
+            $this->pdo = new PDO($conStr, InsertData::DB_USER, InsertData::DB_PASSWORD);
         } catch (PDOException $pe) {
             die($pe->getMessage());
         }
     }
-//...
 
-   /**
-     * Insert a row into a table
-     * @return
-     */
     public function insert() {
         $sql = "INSERT INTO invoices (
                       InvoiceNo,
@@ -53,3 +44,23 @@ class InsertData {
 
         return $this->pdo->exec($sql);
     }
+
+    function insertSingleRow($InvoiceNo,$StockCode,$Description,$Quantity,$InvoiceDate,$UnitPrice,$CustomerID,$Country) {
+		$task = array(':InvoiceNo' => $InvoiceNo,
+					  ':StockCode' => $StockCode,
+					  ':Description' => $Description,
+                      ':Quantity' => $Quantity,
+                      ':InvoiceDate' => $InvoiceDate,
+                      ':UnitPrice' => $UnitPrice,
+                      ':CustomerID' => $CustomerID,
+					  ':Country' => $Country);
+
+		$sql = 'INSERT INTO invoices(InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country)
+				VALUES(:InvoiceNo,:StockCode,:Description,:Quantity,:InvoiceDate,:UnitPrice,:CustomerID,:Country)';
+
+		$q = $this->pdo->prepare($sql);
+
+		return $q->execute($task);
+	}
+
+}
