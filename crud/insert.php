@@ -18,29 +18,8 @@ class InsertData {
             die($pe->getMessage());
         }
     }
-
-    public function insert() {
-        $sql = 'INSERT INTO invoices (
-                      InvoiceNo, StockCode, Description, Quantity, InvoiceDate, UnitPrice, CustomerID, Country
-                  )
-                  VALUES (
-                    :InvoiceNo, :StockCode, :Description, :Quantity, :InvoiceDate, :UnitPrice, :CustomerID, :Country
-                  )';
-
-        return $this->pdo->exec($sql);
-    }
-
     
     function insertSingleRow($InvoiceNo,$StockCode,$Description,$Quantity,$InvoiceDate,$UnitPrice,$CustomerID,$Country) {
-        
-        $InvoiceNo =  $_REQUEST['InvoiceNo'];
-        $StockCode = $_REQUEST['StockCode'];
-        $Description =  $_REQUEST['Description'];
-        $Quantity = $_REQUEST['Quantity'];
-        $InvoiceDate = $_REQUEST['InvoiceDate'];
-        $UnitPrice = $_REQUEST['UnitPrice'];
-        $CustomerID = $_REQUEST['CustomerID'];
-        $Country = $_REQUEST['Country'];
 
         $task = array(':InvoiceNo' => $InvoiceNo,
                     ':StockCode' => $StockCode,
@@ -66,3 +45,14 @@ class InsertData {
 }
 
 $obj = new InsertData();
+
+$InvoiceNo =  $_POST['InvoiceNo'];
+$StockCode = $_POST['StockCode'];
+$Description =  $_POST['Description'];
+$Quantity = $_POST['Quantity'];
+$InvoiceDate = $_POST['InvoiceDate'];
+$UnitPrice = $_POST['UnitPrice'];
+$CustomerID = $_POST['CustomerID'];
+$Country = $_POST['Country'];
+
+$obj->insertSingleRow($InvoiceNo,$StockCode,$Description,$Quantity,$InvoiceDate,$UnitPrice,$CustomerID,$Country);
