@@ -15,6 +15,7 @@
         
     </head>
     <body>
+    <a href="insert.php">Add New Data</a><br/><br/>
         <table border="1">
 	        <thead>
 		    <tr>
