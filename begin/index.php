@@ -1,7 +1,8 @@
 <?php
 		$pdo = new PDO('mysql:host=localhost;dbname=ship_ports', 'root', 'password');
 
-        $sql = 'SELECT * FROM invoices Orders LIMIT 100';
+        /*$sql = 'SELECT * FROM invoices Orders LIMIT 100';*/
+        $sql = 'SELECT * FROM invoices ORDER BY InvoiceDate DESC LIMIT 30';
 
         $q = $pdo->query($sql);
 
