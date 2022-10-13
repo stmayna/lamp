@@ -19,6 +19,17 @@ class InsertData {
         }
     }
 
+    public function insert() {
+        $sql = 'INSERT INTO invoices (
+                      InvoiceNo, StockCode, Description, Quantity, InvoiceDate, UnitPrice, CustomerID, Country
+                  )
+                  VALUES (
+                    :InvoiceNo, :StockCode, :Description, :Quantity, :InvoiceDate, :UnitPrice, :CustomerID, :Country
+                  )';
+
+        return $this->pdo->exec($sql);
+    }
+
     
     function insertSingleRow($InvoiceNo,$StockCode,$Description,$Quantity,$InvoiceDate,$UnitPrice,$CustomerID,$Country) {
         
