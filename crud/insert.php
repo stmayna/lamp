@@ -18,7 +18,7 @@ class InsertData {
             die($pe->getMessage());
         }
     }
-
+/*
     public function insert() {
         $sql = "INSERT INTO invoices (
                       InvoiceNo,
@@ -35,7 +35,6 @@ class InsertData {
                       '88890',
                       'This is the description 3',
                       5,
-                      /* I want it to automatically insert the current date and time*/
                       '2014-02-12 08:35:00',
                       4.25,
                       '13046',
@@ -43,10 +42,20 @@ class InsertData {
                   )";
 
         return $this->pdo->exec($sql);
-    }
+    } */
 
     function insertSingleRow($InvoiceNo,$StockCode,$Description,$Quantity,$InvoiceDate,$UnitPrice,$CustomerID,$Country) {
-		$task = array(':InvoiceNo' => $InvoiceNo,
+        
+        $InvoiceNo =  $_REQUEST['InvoiceNo'];
+        $StockCode = $_REQUEST['StockCode'];
+        $Description =  $_REQUEST['Description'];
+        $Quantity = $_REQUEST['Quantity'];
+        $InvoiceDate = $_REQUEST['InvoiceDate'];
+        $UnitPrice = $_REQUEST['UnitPrice'];
+        $CustomerID = $_REQUEST['CustomerID'];
+        $Country = $_REQUEST['Country'];
+        
+        $task = array(':InvoiceNo' => $InvoiceNo,
                     ':StockCode' => $StockCode,
                     ':Description' => $Description,
                     ':Quantity' => $Quantity,
@@ -71,7 +80,7 @@ class InsertData {
 
 $obj = new InsertData();
 
-if ($obj->insertSingleRow('777779','88890','This is the description 3',5,'2014-02-12 08:35:00',4.25,'13046','United Kingdom') !==false)
+if ($obj->insertSingleRow('777780','88891','This is the description 4',5,'2014-02-13 08:35:00',4.25,'13046','United Kingdom') !==false)
     echo "A new data has been added into invoices";
 else
     echo "Error adding new data";
