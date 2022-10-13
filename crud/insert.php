@@ -18,32 +18,8 @@ class InsertData {
             die($pe->getMessage());
         }
     }
-/*
-    public function insert() {
-        $sql = "INSERT INTO invoices (
-                      InvoiceNo,
-                      StockCode,
-                      Description,
-                      Quantity,
-                      InvoiceDate,
-                      UnitPrice,
-                      CustomerID,
-                      Country
-                  )
-                  VALUES (
-                      '777779',
-                      '88890',
-                      'This is the description 3',
-                      5,
-                      '2014-02-12 08:35:00',
-                      4.25,
-                      '13046',
-                      'United Kingdom'
-                  )";
 
-        return $this->pdo->exec($sql);
-    } */
-
+    
     function insertSingleRow($InvoiceNo,$StockCode,$Description,$Quantity,$InvoiceDate,$UnitPrice,$CustomerID,$Country) {
         
         $InvoiceNo =  $_REQUEST['InvoiceNo'];
@@ -54,7 +30,7 @@ class InsertData {
         $UnitPrice = $_REQUEST['UnitPrice'];
         $CustomerID = $_REQUEST['CustomerID'];
         $Country = $_REQUEST['Country'];
-        
+
         $task = array(':InvoiceNo' => $InvoiceNo,
                     ':StockCode' => $StockCode,
                     ':Description' => $Description,
@@ -77,11 +53,5 @@ class InsertData {
 	}
 
 }
-/*
-$obj = new InsertData();
 
-if ($obj->insertSingleRow('777780','88891','This is the description 4',5,'2014-02-13 08:35:00',4.25,'13046','United Kingdom') !==false)
-    echo "A new data has been added into invoices";
-else
-    echo "Error adding new data";
-*/
+$obj = new InsertData();
