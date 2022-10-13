@@ -15,7 +15,9 @@
         
     </head>
     <body>
-    <a href="form.php">Add New Data</a><br/><br/>
+    <br/>
+    <a href="form.php"><input type="submit" value="Add New Data"></a>
+    <br/>
         <table border="1">
 	        <thead>
 		    <tr>
