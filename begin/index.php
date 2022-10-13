@@ -22,7 +22,7 @@
                 <th>Stock Code</th>
                 <th>Description</th>
                 <th>Quantity</th>
-                <th>InvoiceDate</th>
+                <th>Invoice Date</th>
                 <th>Unit Price</th>
                 <th>Customer ID</th>
                 <th>Country</th>
