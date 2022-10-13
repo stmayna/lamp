@@ -63,4 +63,15 @@ class InsertData {
 		return $q->execute($task);
 	}
 
+    public function __destruct() {
+		$this->pdo = null;
+	}
+
 }
+
+$obj = new InsertData();
+
+if ($obj->insertSingleRow('777779','88890','This is the description 3',5,'2014-02-12 08:35:00',4.25,'13046','United Kingdom') !==false)
+    echo "A new data has been added into invoices";
+else
+    echo "Error adding new data";
