@@ -47,13 +47,13 @@ class InsertData {
 
     function insertSingleRow($InvoiceNo,$StockCode,$Description,$Quantity,$InvoiceDate,$UnitPrice,$CustomerID,$Country) {
 		$task = array(':InvoiceNo' => $InvoiceNo,
-					  ':StockCode' => $StockCode,
-					  ':Description' => $Description,
-                      ':Quantity' => $Quantity,
-                      ':InvoiceDate' => $InvoiceDate,
-                      ':UnitPrice' => $UnitPrice,
-                      ':CustomerID' => $CustomerID,
-					  ':Country' => $Country);
+                    ':StockCode' => $StockCode,
+                    ':Description' => $Description,
+                    ':Quantity' => $Quantity,
+                    ':InvoiceDate' => $InvoiceDate,
+                    ':UnitPrice' => $UnitPrice,
+                    ':CustomerID' => $CustomerID,
+                    ':Country' => $Country);
 
 		$sql = 'INSERT INTO invoices(InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country)
 				VALUES(:InvoiceNo,:StockCode,:Description,:Quantity,:InvoiceDate,:UnitPrice,:CustomerID,:Country)';
