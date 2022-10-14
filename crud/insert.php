@@ -1,6 +1,7 @@
 <?php
 
-class InsertData {
+class InsertData
+{
 
     const DB_HOST = 'localhost';
     const DB_NAME = 'ship_ports';
@@ -9,7 +10,8 @@ class InsertData {
 
     private $pdo = null;
 
-    public function __construct() {
+    public function __construct()
+    {
         $conStr = sprintf("mysql:host=%s;dbname=%s", InsertData::DB_HOST, InsertData::DB_NAME);
         // what's %s for? don't you curious?
         try {
@@ -18,30 +20,33 @@ class InsertData {
             die($pe->getMessage());
         }
     }
-    
-    function insertSingleRow($InvoiceNo,$StockCode,$Description,$Quantity,$InvoiceDate,$UnitPrice,$CustomerID,$Country) {
 
-        $task = array(':InvoiceNo' => $InvoiceNo,
-                    ':StockCode' => $StockCode,
-                    ':Description' => $Description,
-                    ':Quantity' => $Quantity,
-                    ':InvoiceDate' => $InvoiceDate,
-                    ':UnitPrice' => $UnitPrice,
-                    ':CustomerID' => $CustomerID,
-                    ':Country' => $Country);
+    function insertSingleRow($InvoiceNo, $StockCode, $Description, $Quantity, $InvoiceDate, $UnitPrice, $CustomerID, $Country)
+    {
 
-		$sql = 'INSERT INTO invoices(InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country)
+        $task = array(
+            ':InvoiceNo' => $InvoiceNo,
+            ':StockCode' => $StockCode,
+            ':Description' => $Description,
+            ':Quantity' => $Quantity,
+            ':InvoiceDate' => $InvoiceDate,
+            ':UnitPrice' => $UnitPrice,
+            ':CustomerID' => $CustomerID,
+            ':Country' => $Country
+        );
+
+        $sql = 'INSERT INTO invoices(InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country)
 				VALUES(:InvoiceNo,:StockCode,:Description,:Quantity, :InvoiceDate, :UnitPrice, :CustomerID, :Country)';
 
-		$q = $this->pdo->prepare($sql);
+        $q = $this->pdo->prepare($sql);
 
-		return $q->execute($task);
-	}
+        return $q->execute($task);
+    }
 
-    public function __destruct() {
-		$this->pdo = null;
-	}
-
+    public function __destruct()
+    {
+        $this->pdo = null;
+    }
 }
 
 $obj = new InsertData();
@@ -54,6 +59,6 @@ $UnitPrice = $_POST['UnitPrice'];
 $CustomerID = $_POST['CustomerID'];
 $Country = $_POST['Country'];
 
-$obj->insertSingleRow($InvoiceNo,$StockCode,$Description,$Quantity,$InvoiceDate,$UnitPrice,$CustomerID,$Country);
+$obj->insertSingleRow($InvoiceNo, $StockCode, $Description, $Quantity, $InvoiceDate, $UnitPrice, $CustomerID, $Country);
 
 header("Location:index.php");
