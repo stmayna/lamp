@@ -1,6 +1,6 @@
 <?php
     $pdo = new PDO('mysql:host=localhost;dbname=ship_ports', 'root', 'password');
-    $sql = 'SELECT * FROM invoices';
+    $sql = 'SELECT * FROM invoices WHERE deleted=0';
     $q = $pdo->prepare($sql);
     $q->execute();
     $res = $q->fetchAll();
