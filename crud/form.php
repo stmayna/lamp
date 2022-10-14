@@ -2,54 +2,63 @@
 <html lang="en">
 <head>
 	<title>Online Retail</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-	<left>
-		<h1>Invoice Database</h1>
-		<form action="insert.php" method="post">
-			
-        <p>
-			<label for="InvoiceNo">Invoice Number:</label>
-			<input type="text" name="InvoiceNo" id="InvoiceNo">
-        </p>
+<div class="container">
+	<br/>
+	<h3>Add New Item</h3>
+	<br/>
+	<div class="row">
+	<div class="col-lg-6">
+	<form action="insert.php" method="POST">
 		
-        <p>
-			<label for="StockCode">Stock Code:</label>
-			<input type="text" name="StockCode" id="StockCode">
-        </p>
-	
-        <p>
-			<label for="Description">Description:</label>
-			<input type="text" name="Description" id="Description">
-        </p>
-			
-        <p>
-			<label for="Quantity">Quantity:</label>
-			<input type="text" name="Quantity" id="Quantity">
-        </p>
+		<div class="form-group">
+		<label>Invoice Number</label>
+		<input type="text" value="" class="form-control" name="InvoiceNo">
+		</div>
 
-        <p>
-			<label for="InvoiceDate">Invoice Date:</label>
-			<input type="text" name="InvoiceDate" id="InvoiceDate">
-        </p>
+		<div class="form-group">
+		<label>Stock Code</label>
+		<input type="text" value="" class="form-control" name="StockCode">
+		</div>
 
-        <p>
-			<label for="UnitPrice">Unit Price:</label>
-			<input type="text" name="UnitPrice" id="UnitPrice">
-        </p>
+		<div class="form-group">
+		<label>Description</label>
+		<input type="text" value="" class="form-control" name="Description">
+		</div>
 
-        <p>
-			<label for="CustomerID">Customer ID:</label>
-			<input type="text" name="CustomerID" id="CustomerID">
-        </p>
-			
-        <p>
-			<label for="Country">Country:</label>
-			<input type="text" name="Country" id="Country">
-        </p>
+		<div class="form-group">
+		<label>Quantity</label>
+		<input type="text" value="" class="form-control" name="Quantity">
+		</div>
 
-			<input type="submit" value="Submit">
-		</form>
-    </left>
+		<div class="form-group">
+		<label>Invoice Date</label>
+		<input type="text" value="" class="form-control" name="InvoiceDate">
+		</div>
+
+		<div class="form-group">
+		<label>Unit Price</label>
+		<input type="text" value="" class="form-control" name="UnitPrice">
+		</div>
+
+		<div class="form-group">
+		<label>Customer ID</label>
+		<input type="text" value="" class="form-control" name="CustomerID">
+		</div>
+
+		<div class="form-group">
+		<label>Country</label>
+		<input type="text" value="" class="form-control" name="Country">
+		</div>
+
+		<button class="btn btn-primary btn-md" name="create"><i class="fa fa-plus"></i> Add</button>
+
+	</form>
+	</div>
+	</div>
+	</div>
 </body>
 </html>

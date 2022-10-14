@@ -31,7 +31,7 @@ class InsertData {
                     ':Country' => $Country);
 
 		$sql = 'INSERT INTO invoices(InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country)
-				VALUES(:InvoiceNo,:StockCode,:Description,:Quantity,:InvoiceDate,:UnitPrice,:CustomerID,:Country)';
+				VALUES(:InvoiceNo,:StockCode,:Description,:Quantity, :InvoiceDate, :UnitPrice, :CustomerID, :Country)';
 
 		$q = $this->pdo->prepare($sql);
 
@@ -45,7 +45,6 @@ class InsertData {
 }
 
 $obj = new InsertData();
-
 $InvoiceNo =  $_POST['InvoiceNo'];
 $StockCode = $_POST['StockCode'];
 $Description =  $_POST['Description'];
@@ -56,6 +55,6 @@ $CustomerID = $_POST['CustomerID'];
 $Country = $_POST['Country'];
 
 $obj->insertSingleRow($InvoiceNo,$StockCode,$Description,$Quantity,$InvoiceDate,$UnitPrice,$CustomerID,$Country);
-if (TRUE) {
-    
-}
+
+header("Location:index.php");
+?>
