@@ -57,4 +57,3 @@ $Country = $_POST['Country'];
 $obj->insertSingleRow($InvoiceNo,$StockCode,$Description,$Quantity,$InvoiceDate,$UnitPrice,$CustomerID,$Country);
 
 header("Location:index.php");
-?>
